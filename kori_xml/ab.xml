@@ -1,0 +1,35 @@
+   <Row AutoFitHeight="0" Height="15.0">
+    <Cell Index="1" StyleID="27" MergeAcross="4">
+     <Data Type="String">230859153000</Data>
+    </Cell>
+    <Cell Index="6" StyleID="27">
+     <Data Type="String">NpwGspSql1\SQL01( NpwGspSql1.africanbank.net)</Data>
+    </Cell>
+    <Cell Index="7" StyleID="28" MergeAcross="2">
+     <Data Type="DateTime">2020-02-27T0350:45</Data>
+    </Cell>
+    <Cell Index="10" StyleID="29">
+     <Data Type="Number">1648</Data>
+    </Cell>
+    <Cell Index="11" StyleID="27">
+     <Data Type="String">saguser</Data>
+    </Cell>
+    <Cell Index="12" StyleID="27">
+     <Data Type="String">10.130.124.236</Data>
+    </Cell>
+    <Cell Index="13" StyleID="27">
+     <Data Type="String">nplgp4mw3.africanbank.net</Data>
+    </Cell>
+    <Cell Index="14" StyleID="27">
+     <Data Type="String">(@P1 int)DELETE FROM TBLREL_USER_GROUP WHERE IDTHINGUSER = @P1</Data>
+    </Cell>
+    <Cell Index="15" StyleID="27">
+     <Data Type="String">TBLREL_USER_GROUP(TABLE) Ownerwm82p4aomw.dbo</Data>
+    </Cell>
+    <Cell Index="16" StyleID="27">
+     <Data Type="String">DELETE</Data>
+    </Cell>
+    <Cell Index="17" StyleID="28">
+     <Data Type="DateTime">2020-02-27T0329:07</Data>
+    </Cell>
+   </Row>
