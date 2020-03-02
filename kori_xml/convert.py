@@ -1,36 +1,27 @@
 import xml.etree.ElementTree as ET
 import re
+import csv
 
 tree = ET.parse('ab.xml')
 root = tree.getroot()
-
 i = tree.iter()
-
-head = []
-data = []
 text = []
-
 for x in i:
-	head.append(x.tag)
-	data.append(x.attrib)
 	text.append(x.text)
 
 i = 0
 j = 0
 titles = []
-headers = []
+heads = []
+headers = ''
 data = []
-ndata = []
-description = {}
+info = []
 
 for x in text:
 	if x is None or "\n" in x:
 		continue
-#	print(x)
+	x = re.sub(',', ' \ ', x)
 	data.append(x)
-	i += 1
-	if i > 10:
-		break;
 
 a = 0
 for x in data:
@@ -39,17 +30,35 @@ for x in data:
 			a = 1
 		titles.append(x)
 	elif a is 1:
-		print(x)
 		if "Logon Time" in x:
 			a = 2
-		headers.append(x)
+		x = x[:-1]
+		heads.append(x)
+		headers += x + ', '
 	else:
-		ndata.append(x)
-		print(x)
-		
+		info.append(x)
 
-for x in ndata:
-	print(x)
-		
-		
-		
+end = 11
+headers = headers[:-2]
+c = 0
+i = 0
+j = 0
+data = {}
+data[c] = ''
+for x in info:
+	if i == end:
+		i = 0
+		data[c] = data[c][:-2]
+		c += 1
+		data[c] = ''
+	if i < end:
+		data[c] += x + ', '
+		i += 1
+
+with open('result.csv', 'w') as f:
+	for x in titles:
+		f.write("%s\n" % x)
+	f.write("\n")
+	f.write("%s\n" % headers)
+	for item in data:
+		f.write("%s\n" % data[item])	
