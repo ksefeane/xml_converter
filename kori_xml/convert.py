@@ -1,8 +1,13 @@
 import xml.etree.ElementTree as ET
 import re
 import csv
+import sys
 
-tree = ET.parse('ab.xml')
+thisFile = sys.argv[1]
+# base = os.path.splitext(thisFile)
+out = thisFile.replace('xml', 'csv')
+
+tree = ET.parse(thisFile)
 root = tree.getroot()
 i = tree.iter()
 text = []
@@ -25,11 +30,11 @@ for x in text:
 
 a = 0
 for x in data:
-	if a is 0:
+	if a == 0:
 		if "Rules = " in x:
 			a = 1
 		titles.append(x)
-	elif a is 1:
+	elif a == 1:
 		if "Logon Time" in x:
 			a = 2
 		x = x[:-1]
@@ -55,7 +60,7 @@ for x in info:
 		data[c] += x + ', '
 		i += 1
 
-with open('result.csv', 'w') as f:
+with open(out, 'w') as f:
 	for x in titles:
 		f.write("%s\n" % x)
 	f.write("\n")
