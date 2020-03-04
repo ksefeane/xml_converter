@@ -66,4 +66,6 @@ with open(out, 'w') as f:
 	f.write("\n")
 	f.write("%s\n" % headers)
 	for item in data:
-		f.write("%s\n" % data[item])	
+		f.write("%s\n" % data[item])
+
+print("conversion complete..")
