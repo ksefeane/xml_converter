@@ -1,10 +1,8 @@
 import xml.etree.ElementTree as ET
 import re
-import csv
-import sys
+import sys, os
 
 thisFile = sys.argv[1]
-# base = os.path.splitext(thisFile)
 out = thisFile.replace('xml', 'csv')
 
 tree = ET.parse(thisFile)
@@ -14,13 +12,17 @@ text = []
 for x in i:
 	text.append(x.text)
 
+a = 0
 i = 0
 j = 0
+end = 11
 titles = []
-heads = []
 headers = ''
 data = []
 info = []
+
+if not os.path.exists('csv'):
+	os.mkdir('csv')
 
 for x in text:
 	if x is None or "\n" in x:
@@ -28,7 +30,6 @@ for x in text:
 	x = re.sub(',', ' \ ', x)
 	data.append(x)
 
-a = 0
 for x in data:
 	if a == 0:
 		if "Rules = " in x:
@@ -38,12 +39,10 @@ for x in data:
 		if "Logon Time" in x:
 			a = 2
 		x = x[:-1]
-		heads.append(x)
 		headers += x + ', '
 	else:
 		info.append(x)
 
-end = 11
 headers = headers[:-2]
 c = 0
 i = 0
@@ -68,4 +67,4 @@ with open(out, 'w') as f:
 	for item in data:
 		f.write("%s\n" % data[item])
 
-print("conversion complete..")
+print("success: ", out)

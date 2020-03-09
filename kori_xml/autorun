@@ -1,0 +1,9 @@
+#! /usr/bin/bash
+
+folder=xml
+for file in $folder/*.xml
+do
+    echo "converting: $file"
+    python3 convert.py "$file"
+done
+echo "conversion complete -> csv"
